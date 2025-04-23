@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1D Kinematics Solver</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            background-color: #b2ebf2;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        input {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid #00796b;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #00796b;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>1D Kinematics Solver</h1>
+    <p>Enter any 3 known values:</p>
+    
+    <input type="text" id="u" placeholder="Initial velocity (u) in m/s">
+    <input type="text" id="v" placeholder="Final velocity (v) in m/s">
+    <input type="text" id="a" placeholder="Acceleration (a) in m/s²">
+    <input type="text" id="t" placeholder="Time (t) in s">
+    <input type="text" id="s" placeholder="Displacement (s) in m">
+
+    <button onclick="solve()">Solve</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    function solve() {
+        let u = parseFloat(document.getElementById('u').value);
+        let v = parseFloat(document.getElementById('v').value);
+        let a = parseFloat(document.getElementById('a').value);
+        let t = parseFloat(document.getElementById('t').value);
+        let s = parseFloat(document.getElementById('s').value);
+
+        let known = {
+            u: !isNaN(u),
+            v: !isNaN(v),
+            a: !isNaN(a),
+            t: !isNaN(t),
+            s: !isNaN(s)
+        };
+
+        let count = Object.values(known).filter(Boolean).length;
+
+        if (count < 3) {
+            document.getElementById('result').innerText = "Please enter at least three known values.";
+            return;
+        }
+
+        // Equations:
+        // v = u + at
+        // s = ut + 0.5at²
+        // v² = u² + 2as
+        // s = ((u + v) / 2) * t
+
+        try {
+            // Solve missing values using appropriate combinations
+            if (!known.v && known.u && known.a && known.t) v = u + a * t;
+            if (!known.u && known.v && known.a && known.t) u = v - a * t;
+            if (!known.a && known.u && known.v && known.t) a = (v - u) / t;
+            if (!known.t && known.u && known.v && known.a) t = (v - u) / a;
+            if (!known.s && known.u && known.t && known.a) s = u * t + 0.5 * a * t * t;
+            if (!known.s && known.u && known.v && known.t) s = ((u + v) / 2) * t;
+            if (!known.v && known.u && known.a && known.s) v = Math.sqrt(u * u + 2 * a * s);
+            if (!known.u && known.v && known.a && known.s) u = Math.sqrt(v * v - 2 * a * s);
+            if (!known.a && known.u && known.v && known.s) a = (v * v - u * u) / (2 * s);
+            if (!known.t && known.u && known.a && known.s) t = (-u + Math.sqrt(u * u + 2 * a * s)) / a;
+
+            let output = `
+                Initial velocity (u): ${u.toFixed(2)} m/s<br>
+                Final velocity (v): ${v.toFixed(2)} m/s<br>
+                Acceleration (a): ${a.toFixed(2)} m/s²<br>
+                Time (t): ${t.toFixed(2)} s<br>
+                Displacement (s): ${s.toFixed(2)} m
+            `;
+
+            document.getElementById('result').innerHTML = output;
+        } catch (err) {
+            document.getElementById('result').innerText = "Unable to solve due to inconsistent or insufficient values.";
+        }
+    }
+</script>
+
+</body>
+</html>

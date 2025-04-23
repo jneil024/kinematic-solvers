@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+.calculator-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+
+.motion-box {
+background: #e7f3ff;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+.motion-box h3 {
+    color: #0056b3;
+    margin: 1.5rem 0 1rem 0;
+    font-size: 1.3em;
+    width: 100%;
+}
+
+
+.motion-box h3:first-child {
+    margin-top: 0;
+}
+
+
+.motion-box input {
+    display: block;
+    width: 90%;
+    margin: 8px auto;
+    padding: 10px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    text-align: center;
+}
+
+
+.solve-btn {
+    background: #007bff;
+    color: white;
+    width: 90%;
+    padding: 12px;
+    margin: 15px auto 0;
+    border: none;
+font-size: 1.1em;
+    transition: background 0.3s ease;
+}
+
+
+.solve-btn:hover {
+    background: #0056b3;
+}
+
+
+.results {
+    margin-top: 15px;
+    padding: 10px;
+    background: white;
+    border-radius: 5px;
+    min-height: 80px;
+    width: 90%;
+    text-align: center;
+}
+
+
+.result-display, .resultant-display {
+    margin-top: 15px;
+    width: 100%;
+}
+
+
+.result-item, .resultant-item {
+    display: block;
+    text-align: center;
+    padding: 8px 0;
+}
+
+
+.result-label {
+    font-weight: bold;
+    color: #0056b3;
+}
+
+
+.result-value {
+    color: #333;
+    margin-left: 5px;
+}
+.resultant-value {
+    font-weight: bold;
+    color: #0056b3;
+}
+
+
+.error {
+    color: #dc3545;
+    font-weight: bold;
+    padding: 10px;
+}
+
+
+.auto-filled {
+    background-color: #f0fff0;
+    border-color: #28a745;
+}
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motion Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <!-- Vertical Motion Box -->
+        <div class="motion-box vertical">
+            <h3>Vertical Motion</h3>
+            <input type="number" id="s" placeholder="Displacement (m)" oninput="autoSolve('vertical')">
+            <input type="number" id="v_vertical" placeholder="Final Velocity (m/s)" oninput="autoSolve('vertical')">
+            <input type="number" id="u" placeholder="Initial Velocity (m/s)" oninput="autoSolve('vertical')">
+            <input type="number" id="a" placeholder="Acceleration (m/s²)" oninput="autoSolve('vertical')">
+            <input type="number" id="t" placeholder="Time (s)" oninput="autoSolve('vertical')">
+            <button class="solve-btn" id="solveVertical">Solve</button>
+            <div id="verticalResults" class="results"></div>
+        </div>
+        <!-- Horizontal Motion Box -->
+        <div class="motion-box horizontal">
+            <h3>Horizontal Motion</h3>
+            <input type="number" id="d" placeholder="Displacement (m)" oninput="autoSolve('horizontal')">
+            <input type="number" id="v_horizontal" placeholder="Velocity (m/s)" oninput="autoSolve('horizontal')">
+            <input type="number" id="t" placeholder="Time (s)" oninput="autoSolve('horizontal')">
+            <button class="solve-btn" id="solveHorizontal">Solve</button>
+            <div id="horizontalResults" class="results"></div>
+        </div>
+        <!-- Combined Projectile & Vector Section -->
+        <div class="motion-box projectile">
+            <!-- Resultant Vector Section -->
+            <h3>Resultant Vector</h3>
+            <input type="number" id="vx" placeholder="X Component (m/s)" oninput="autoSolve('resultant')">
+            <input type="number" id="vy" placeholder="Y Component (m/s)" oninput="autoSolve('resultant')">
+            <button class="solve-btn" id="solveResultant">Calculate Vector</button>
+            <div id="vectorResults" class="results"></div>
+
+
+            <!-- Projectile Motion Section -->
+            <h3>Projectile Motion</h3>
+            <input type="number" id="angle" placeholder="Launch Angle (degrees)" oninput="autoSolve('projectile')">
+            <input type="number" id="v0" placeholder="Initial Velocity (m/s)" oninput="autoSolve('projectile')">
+            <button class="solve-btn" id="solveProjectile">Calculate</button>
+            <div id="projectileResults" class="results"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+
+
+<script>
+document.querySelectorAll('input[type="number"]').forEach(input => {
+  input.addEventListener('focus', () => {
+      input.type = 'text';
+      input.setAttribute('inputmode', 'decimal');
+  });
+input.addEventListener('blur', () => {
+      input.type = 'number';
+  });
+});
+
+
+// Auto-solve on input changes
+function autoSolve(type) {
+  switch(type) {
+      case 'vertical':
+          const verticalInputs = [...document.querySelectorAll('#vertical input')]
+              .filter(i => i.value.trim() !== '').length;
+          if(verticalInputs >= 3) {
+              solveVertical();
+          } else {
+              clearResults('verticalResults');
+          }
+          break;
+         
+      case 'horizontal':
+          const horizontalInputs = [...document.querySelectorAll('#horizontal input')]
+              .filter(i => i.value.trim() !== '').length;
+          if(horizontalInputs >= 2) {
+              solveHorizontal();
+          } else {
+              clearResults('horizontalResults');
+          }
+          break;
+         
+      case 'projectile':
+          if(document.getElementById('angle').value.trim() &&
+             document.getElementById('v0').value.trim()) {
+              calculateProjectile();
+          } else {
+              clearResults('projectileResults');
+          }
+          break;
+      case 'resultant':
+          if(document.getElementById('vx').value.trim() &&
+             document.getElementById('vy').value.trim()) {
+              calculateResultant();
+          } else {
+              clearResults('vectorResults');
+          }
+          break;
+  }
+}
+// Vertical Motion Solver
+document.getElementById('solveVertical').addEventListener('click', solveVertical);
+function solveVertical() {
+  let s = parseInput('s');
+  let v = parseInput('v_vertical');
+  let u = parseInput('u');
+  let a = parseInput('a');
+  let t = parseInput('t');
+
+
+  const knownCount = [s, v, u, a, t].filter(x => x !== undefined).length;
+  if (knownCount < 3) {
+      showError('Enter at least 3 values', 'verticalResults');
+      return;
+  }
+
+
+  let changed;
+  do {
+      changed = false;
+     
+      // Equation 1: v = u + at
+      if (v === undefined && u !== undefined && a !== undefined && t !== undefined) {
+          v = u + a * t;
+          changed = true;
+      } else if (u === undefined && v !== undefined && a !== undefined && t !== undefined) {
+          u = v - a * t;
+          changed = true;
+} else if (a === undefined && v !== undefined && u !== undefined && t !== undefined && t !== 0) {
+          a = (v - u) / t;
+          changed = true;
+      } else if (t === undefined && v !== undefined && u !== undefined && a !== undefined && a !== 0) {
+          t = (v - u) / a;
+          changed = true;
+      }
+
+
+      // Equation 2: s = ut + ½at²
+      if (s === undefined && u !== undefined && t !== undefined && a !== undefined) {
+          s = u * t + 0.5 * a * t * t;
+          changed = true;
+      } else if (u === undefined && s !== undefined && t !== undefined && a !== undefined && t !== 0) {
+          u = (s - 0.5 * a * t * t) / t;
+          changed = true;
+      } else if (a === undefined && s !== undefined && u !== undefined && t !== undefined && t !== 0) {
+          a = 2 * (s - u * t) / (t * t);
+          changed = true;
+      } else if (t === undefined && s !== undefined && u !== undefined && a !== undefined) {
+          const A = 0.5 * a;
+          const B = u;
+          const C = -s;
+          const discriminant = B * B - 4 * A * C;
+          if (discriminant >= 0) {
+              const sqrtVal = Math.sqrt(discriminant);
+              const t1 = (-B + sqrtVal) / (2 * A);
+              const t2 = (-B - sqrtVal) / (2 * A);
+              t = t1 > 0 ? t1 : t2 > 0 ? t2 : undefined;
+              if (t !== undefined) changed = true;
+          }
+      }
+
+
+      // Equation 3: v² = u² + 2as
+if (v === undefined && u !== undefined && a !== undefined && s !== undefined) {
+          const val = u * u + 2 * a * s;
+          if (val >= 0) {
+              v = Math.sqrt(val);
+              changed = true;
+          }
+      } else if (u === undefined && v !== undefined && a !== undefined && s !== undefined) {
+          const val = v * v - 2 * a * s;
+          if (val >= 0) {
+              u = Math.sqrt(val);
+              changed = true;
+          }
+      } else if (a === undefined && v !== undefined && u !== undefined && s !== undefined && s !== 0) {
+          a = (v * v - u * u) / (2 * s);
+          changed = true;
+      } else if (s === undefined && v !== undefined && u !== undefined && a !== undefined && a !== 0) {
+          s = (v * v - u * u) / (2 * a);
+          changed = true;
+      }
+  } while (changed);
+
+
+  displayResults('verticalResults', {
+      Displacement: s,
+      'Final Velocity': v,
+      'Initial Velocity': u,
+      Acceleration: a,
+      Time: t
+  });
+}
+
+
+// Horizontal Motion Solver
+document.getElementById('solveHorizontal').addEventListener('click', solveHorizontal);
+function solveHorizontal() {
+  let d = parseInput('d');
+  let v = parseInput('v_horizontal');
+let t = parseInput('t');
+
+
+  const knownCount = [d, v, t].filter(x => x !== undefined).length;
+  if (knownCount < 2) {
+      showError('Enter any 2 values', 'horizontalResults');
+      return;
+  }
+
+
+  if (d === undefined && v !== undefined && t !== undefined) {
+      d = v * t;
+  } else if (v === undefined && d !== undefined && t !== undefined && t !== 0) {
+      v = d / t;
+  } else if (t === undefined && d !== undefined && v !== undefined && v !== 0) {
+      t = d / v;
+  }
+
+
+  displayResults('horizontalResults', {
+      Displacement: d,
+      Velocity: v,
+      Time: t
+  });
+}
+
+
+// Projectile Calculator
+document.getElementById('solveProjectile').addEventListener('click', calculateProjectile);
+function calculateProjectile() {
+  const θ = parseInput('angle');
+  const v0 = parseInput('v0');
+  const g = 9.81;
+ 
+  if (!θ || !v0) {
+      showError('Both angle and initial velocity required', 'projectileResults');
+      return;
+  }
+
+
+  const θRad = θ * Math.PI / 180;
+const maxHeight = (v0 * v0 * Math.sin(θRad) ** 2) / (2 * g);
+  const range = (v0 * v0 * Math.sin(2 * θRad)) / g;
+  const flightTime = (2 * v0 * Math.sin(θRad)) / g;
+
+
+  displayResults('projectileResults', {
+      'Max Height': maxHeight,
+      'Range': range,
+      'Flight Time': flightTime
+  });
+}
+
+
+// Resultant Vector Calculator
+document.getElementById('solveResultant').addEventListener('click', calculateResultant);
+function calculateResultant() {
+  const vx = parseInput('vx');
+  const vy = parseInput('vy');
+ 
+  if (vx === undefined || vy === undefined) {
+      showError('Both components required', 'vectorResults');
+      return;
+  }
+
+
+  const magnitude = Math.sqrt(vx*vx + vy*vy);
+  const angle = Math.atan2(vy, vx) * 180/Math.PI;
+  const adjustedAngle = angle < 0 ? angle + 360 : angle;
+
+
+  displayVectorResults('vectorResults', {
+      Magnitude: magnitude,
+      Direction: adjustedAngle
+  });
+}
+
+
+// Helper Functions
+function parseInput(id) {
+  const val = document.getElementById(id).value.trim();
+  return val === '' ? undefined : parseFloat(val);
+}
+
+
+function showError(message, target) {
+document.getElementById(target).innerHTML = `<span class="error">${message}</span>`;
+}
+
+
+function clearResults(target) {
+  document.getElementById(target).innerHTML = '';
+}
+
+
+function displayResults(target, results) {
+  const format = num => num !== undefined ? num.toFixed(3) : 'N/A';
+  document.getElementById(target).innerHTML = `
+      <div class="result-display">
+          ${Object.entries(results).map(([key, value]) => `
+              <div class="result-item">
+                  <span class="result-label">${key}:</span>
+                  <span class="result-value">${format(value)} ${key === 'Max Height' || key === 'Range' ? 'm' : key === 'Flight Time' ? 's' : ''}</span>
+              </div>
+          `).join('')}
+      </div>
+  `;
+}
+
+
+function displayVectorResults(target, results) {
+  const format = num => num !== undefined ? num.toFixed(3) : 'N/A';
+  document.getElementById(target).innerHTML = `
+      <div class="resultant-display">
+          ${Object.entries(results).map(([key, value]) => `
+              <div class="resultant-item">
+                  <span class="result-label">${key}:</span>
+                  <span class="resultant-value">${format(value)} ${key === 'Magnitude' ? 'm/s' : '°'}</span>
+              </div>
+          `).join('')}
+      </div>
+  `;
+}
+</script>
+</body>
+</html>
+
