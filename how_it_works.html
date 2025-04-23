@@ -11,6 +11,26 @@
         body.no-transition * {
     transition: none !important;
 }
+.your-div-class {
+    background-color: #e7f3ff; /* Light blue background */
+    border: 2px solid #007bff; /* Darker blue border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 50px; /* Space inside the div */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+    font-family: Arial, sans-serif; /* Font style */
+    margin-left: 80px;
+    margin-right: 70px
+}
+
+h1 {
+    color: #0e60b7; /* Dark greenish color for headings */
+    text-align: center; /* Centered heading */
+}
+
+p {
+    color: #333; /* Dark gray for text */
+    line-height: 1.5; /* Improved readability */
+}
 </style>
 
 <head>
@@ -63,8 +83,8 @@
         <!-- Page content wrapper-->
         <div style="background-color: #e7f3ff;" id="page-content-wrapper">
             <!-- Top navigation-->
-            <nav style="background-color: #e7f3ff;" class="navbar navbar-expand-lg   border-bottom">
-                <div style="background-color: #e7f3ff;" class="container-fluid">
+            <nav style=" background-color: #e7f3ff;" class="navbar navbar-expand-lg   border-bottom">
+                <div style="background-color: #e7f3ff;  " class="container-fluid">
                     <button class="btn btn-primary" id="sidebarToggle">☰</button>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -77,6 +97,33 @@
             </nav>
             <!-- Page content-->
             <div style="background-color: #e7f3ff;" class="container-fluid">
+                <div class="your-div-class">
+                    <h1>HOW IT WORKS</h1>
+                    <h2>Kinematics in One dimension</h2>
+                    <p>Kinematics in one dimension (ID) is the study of motion along a straight line, so only one coordinate (such as x or y) changes over time. It focuses on describing how objects move without considering the forces that cause the motion.</p>
+                    
+                    <h3>Definitions:</h3>
+                    <ul>
+                        <li><strong>Position:</strong> The location of an object along a straight line.</li>
+                        <li><strong>Vector:</strong> A quantity that represents magnitude (size) and direction.</li>
+                        <li><strong>Scalar:</strong> A quantity that represents its magnitude or size.</li>
+                        <li><strong>Displacement:</strong> The vector quantity that describes the change from the initial position.</li>
+                    </ul>
+                    <br>
+                    <br>
+                    <h2>Kinematics in Two dimension</h2>
+                    <p>Kinematics in two dimensions is the study which deals with the motion of certain objects along both the x – and y – axes. It involves paths that form a curved or parabolic, such as projectile motion or circular motion.</p>
+                    <h3>Minor Concept</h3>
+                    <ul>
+                        <li><strong>Position vector (r ):</strong> The origin of some coordinate system to the location of the particle in the xy plane.</li>
+                        <li><strong>Displacement vector (∆d ):</strong> A vector quantity that represents the change in position of an object in two-dimensions. Expressed as: ∆d = xf - xi </li>
+                        <li><strong>Average velocity( vavg ):</strong>The total displacement of both horizontal (x) and vertical (y)  motion of the object divided by the time interval ∆t. Expressed as:  vavg = (xf - xi , yf - yi )∆t=∆d ∆t</li>
+                        <li><strong>Instantaneous velocity( v ):</strong>The limit of the average velocity as ∆t approaches zero. Expressed as:  v = ∆ d ∆t =dd dt</li>
+                        <li><strong>Average acceleration( aavg ):</strong> The change in its instantaneous velocity vector ∆v  divided by the time interval ∆t. Expressed as:  aavg =  v f -  v i ∆t=∆v ∆t</li>
+                        <li><strong>Instantaneous acceleration( a ):</strong> The limiting value of the average velocity as ∆t approaches zero. Expressed as:  v = ∆v ∆t =dv dt</li>
+
+                    </ul>
+                </div>
 
             </div>
         </div>
