@@ -23,7 +23,27 @@
     .bouncing-icon {
         animation: bounce 1s infinite;
     }
-    
+
+.underline-line {
+    width: 1200px; /* Match or slightly smaller than the text width */
+    height: 1px;
+    background-color: #202020; /* Adjust color as needed */
+    margin: -10px auto 0 auto; /* Pull it closer to the text */
+    animation: underline-grow 3s ease forwards;
+    margin-top: -40px;
+}
+
+@keyframes underline-grow {
+    from {
+        width: 0;
+    }
+    to {
+        width: 1100px;
+    }
+}
+
+
+
     </style>
     
 
@@ -74,10 +94,13 @@
                     </div>
                 </nav>
 
-                <div class="container-fluid" style="background-color: #e7f3ff; padding-bottom: 250px; ">
+                <div class="container-fluid" style="background: linear-gradient(to bottom, #e8f4ff, #c1dcff); padding-bottom: 250px; ">
                     <h1 class="text-center" style="font-size: 15rem; font-weight: 600;">Kinemania</h1>
-                    <p class="text-center" style="margin-top: -40px; font-size: 25px;">An all-in-one website for kinematics!</p>
+                    <div class="underline-line"></div>
 
+                    
+                    <p class="text-center" style="margin-top: 5px; font-size: 25px;">An all-in-one website for kinematics!</p>
+<br>
                     <div style="display: flex; justify-content: center; gap: 50px; flex-wrap: wrap;">
                         <!-- Left Column -->
                         <div style="display: flex; flex-direction: column; gap: 15px;">
@@ -108,7 +131,7 @@
             </div>
 
             <!-- Bottom Section -->
-            <div  id="aboutus" style="background: linear-gradient(to bottom, #e7f3ff, #c1dcff);margin-top: -55px; ">
+            <div  id="aboutus" style="background: linear-gradient(to bottom, #c1dcff, #60a5ff);margin-top: -55px;  padding-bottom: 50px;">
                 <div class="container mt-5">
                     <div class="row justify-content-center">
                         <div class="col-lg-10">
