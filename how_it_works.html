@@ -2,37 +2,53 @@
 <html lang="en">
 <style>
     body:not(.sb-sidenav-toggled) .sb-sidenav {
-            transform: translateX(-250px); /* or your sidebar width */
-        }
-    
-        body:not(.sb-sidenav-toggled) .sb-nav-fixed #layoutSidenav #layoutSidenav_nav {
-            display: block;
-        }
-        body.no-transition * {
-    transition: none !important;
-}
-.your-div-class {
-    background-color: #e7f3ff; /* Light blue background */
-    border: 2px solid #007bff; /* Darker blue border */
-    border-radius: 10px; /* Rounded corners */
-    padding: 50px; /* Space inside the div */
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2); /* Subtle shadow for depth */
-    font-family: Arial, sans-serif; /* Font style */
-    margin-left: 80px;
-    margin-right: 70px
-}
-.text-justify-custom {
+        transform: translateX(-250px);
+        /* or your sidebar width */
+    }
+
+    body:not(.sb-sidenav-toggled) .sb-nav-fixed #layoutSidenav #layoutSidenav_nav {
+        display: block;
+    }
+
+    body.no-transition * {
+        transition: none !important;
+    }
+
+    .your-div-class {
+        background-color: #e7f3ff;
+        /* Light blue background */
+        border: 2px solid #007bff;
+        /* Darker blue border */
+        border-radius: 10px;
+        /* Rounded corners */
+        padding: 50px;
+        /* Space inside the div */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        /* Subtle shadow for depth */
+        font-family: Arial, sans-serif;
+        /* Font style */
+        margin-left: 80px;
+        margin-right: 70px;
+        margin-bottom: 50px;
+    }
+
+    .text-justify-custom {
         text-align: justify;
     }
-h1 {
-    color: #0e60b7; /* Dark greenish color for headings */
-    text-align: center; /* Centered heading */
-}
 
-p {
-    color: #333; /* Dark gray for text */
-    line-height: 1.5; /* Improved readability */
-}
+    h1 {
+        color: #0e60b7;
+        /* Dark greenish color for headings */
+        text-align: center;
+        /* Centered heading */
+    }
+
+    p {
+        color: #333;
+        /* Dark gray for text */
+        line-height: 1.5;
+        /* Improved readability */
+    }
 </style>
 
 <head>
@@ -51,14 +67,17 @@ p {
     <div class="d-flex" id="wrapper">
         <!-- Sidebar-->
         <div style="background-color: #e7f3ff;" class="border-end" id="sidebar-wrapper">
-            <center><div style="background-color: #e7f3ff;" class="sidebar-heading border-bottom"><strong>Kinemania</strong> </div></center>
+            <center>
+                <div style="background-color: #e7f3ff;" class="sidebar-heading border-bottom"><strong>Kinemania</strong>
+                </div>
+            </center>
             <div class="list-group list-group-flush">
                 <a style="background-color: #e7f3ff;"
                     class="list-group-item list-group-item-action list-group-item-light p-3"
                     href="index.html">Homepage</a>
                 <a style="background-color: #e7f3ff;"
-                    class="list-group-item list-group-item-action list-group-item-light p-3"
-                    href="od_dimension.html">1D solver</a>
+                    class="list-group-item list-group-item-action list-group-item-light p-3" href="od_dimension.html">1D
+                    solver</a>
                 <a style="background-color: #e7f3ff; "
                     class="list-group-item list-group-item-action list-group-item-light p-3"
                     href="two_dimensional.html">2D solver</a>
@@ -102,39 +121,113 @@ p {
                 <div class="your-div-class">
                     <h1>HOW IT WORKS</h1>
                     <h2>Kinematics in One dimension</h2>
-                    <p>Kinematics in one dimension (ID) is the study of motion along a straight line, so only one coordinate (such as x or y) changes over time. It focuses on describing how objects move without considering the forces that cause the motion.</p>
-                    
+                    <p>Kinematics in one dimension (ID) is the study of motion along a straight line, so only one
+                        coordinate (such as x or y) changes over time. It focuses on describing how objects move without
+                        considering the forces that cause the motion.</p>
+
                     <h3>Definitions:</h3>
                     <ul>
                         <li><strong>Position:</strong> The location of an object along a straight line.</li>
                         <li><strong>Vector:</strong> A quantity that represents magnitude (size) and direction.</li>
                         <li><strong>Scalar:</strong> A quantity that represents its magnitude or size.</li>
-                        <li><strong>Displacement:</strong> The vector quantity that describes the change from the initial position.</li>
+                        <li><strong>Displacement:</strong> The vector quantity that describes the change from the
+                            initial position.</li>
+                        <li><strong>Speed:</strong> The scalar quantity that indicates the distance an object travels
+                            per unit of time; the magnitude of velocity.</li>
+                        <li><strong>Velocity:</strong>Speed of an object including its direction of motion.</li>
+                        <li><strong>Instantaneous velocity:</strong>The velocity of an object at any given instant in
+                            time.</li>
+                        <li><strong>Average velocity:</strong>The total distance traveled divided by the total time
+                            interval.</li>
+                        <li><strong>Constant velocity:</strong>A velocity that does not change with time.</li>
+                        <li><strong>Acceleration</strong>The vector quantity of the rate at which an object's velocity
+                            changes with time; this change may be in speed, direction, or both.</li>
                     </ul>
                     <br>
                     <br>
                     <h2>Kinematics in Two dimension</h2>
-                    <p>Kinematics in two dimensions is the study which deals with the motion of certain objects along both the x – and y – axes. It involves paths that form a curved or parabolic, such as projectile motion or circular motion.</p>
+                    <p>Kinematics in two dimensions is the study which deals with the motion of certain objects along
+                        both the x – and y – axes. It involves paths that form a curved or parabolic, such as projectile
+                        motion or circular motion.</p>
                     <div class="text-center my-4">
                         <h3 class="mb-3"> <strong>Minor Concept</strong> </h3>
-                        <img src="assets/minor.png" alt="Minor Concept" class="img-fluid" style="border: 1px solid rgb(126, 124, 124); border-radius: 5px;">
+                        <img src="assets/minor.png" alt="Minor Concept" class="img-fluid"
+                            style="border: 1px solid rgb(126, 124, 124); border-radius: 5px;">
                     </div>
-                    
+
                     <div class="text-center my-4">
                         <h3 class="mb-3"><strong>Major Concept</strong> </h3>
-                    <p style="margin-top: -15px;" >Independence of Motion in Perpendicular Directions</p>
-                    <p style="text-align: justify; text-align: justify;margin-left: 200px;margin-right: 200px; margin-top: -10px;">
-                        Motion in two dimensions can be analyzed as two independent one-dimensional motions: 
-                        one along the x-axis and one along the y-axis. A force or acceleration in one direction (e.g., y) 
-                        does not affect motion in the perpendicular direction (e.g., x).
-                    </p>
-                    
-                    <ul>
-                        <img src="" alt="" class="img-fluid" style="border-radius: 5px;">
-                    
-                    
+                        <img src="assets/major.png" alt="Minor Concept" class="img-fluid"
+                            style=" width: 730px; border: 1px solid rgb(126, 124, 124); border-radius: 5px;">
                     </div>
+
+                    <h3>Example of usage in word problem:</h3>
+                    <p>The observation deck of the tall skyscraper is 370 m above the street. Determine the time
+                        required for a penny to free fall from the deck to the street below. t= 8.69 sec using the 4th
+                        equation.</p>
+
+                    <h3>Example of applications:</h3>
+                    <ul>
+                        <li><strong></strong>Analyzing cars moving along a straight road</li>
+                        <li><strong></strong>Objects dropped vertically (free fall)</li>
+                        <li><strong></strong>Motion along a straight track</li>
+                        <li><strong></strong>Elevators moving up and down </li>
+                        <li><strong></strong>A ball rolling along a straight hallway</li>
+                        <li><strong></strong>Tracking the position and speed of a rolling ball on a flat surface.</li>
+                        <li><strong></strong>An object sliding down an inclined plane (treated as 1D along the slope)
+                        </li>
+                        <li><strong></strong>A piston moving inside a cylinder</li>
                     </ul>
+                    <div class="text-center my-4">
+                        <h3 class="mb-3"><strong>Sample Problem</strong> </h3>
+                        <img src="assets/sample.png" alt="Minor Concept" class="img-fluid"
+                            style=" width: 730px; border: 1px solid rgb(126, 124, 124); border-radius: 5px;">
+                    </div>
+
+                    <h3>Sample Applications:</h3>
+                    <ol>
+                        <li>Analyzing the motion of a basketball, soccer ball, or football in the air.</li>
+                        <li>Calculating the trajectory of projectiles or thrown objects.</li>
+                        <li>Simulating realistic motion in two-dimensional space</li>
+                        <li>Predicting and verifying object paths in projectile setups.</li>
+                    </ol>
+                    <h3>Note:</h3>
+                    <ul>
+                        <li><strong></strong>Always break the motion into horizontal and vertical components.</li>
+                        <li><strong></strong>Gravity only affects vertical motion.</li>
+                        <li><strong></strong>Make sure angles are in the correct units (degrees or radians) based on
+                            your calculator.</li>
+                        <li><strong></strong>Time is a common variable for both directions; use it to connect vertical
+                            and horizontal analysis.</li>
+                        <li><strong></strong>Check for symmetry; many projectile motions are symmetric if they land at
+                            the same height.</li>
+                        <li><strong></strong>Always label known and unknown quantities clearly before solving.</li>
+                    </ul>
+                    <h3>Additional Notes For Users</h3>
+                    <ol>
+                        <li>Do not ignore signs (left and down symbolizes the negative sign).</li>
+                        <li>Remember to use SI units.</li>
+                        <li>Analyze if the calculated value is physically reasonable, such as not having time and
+                            distance as a negative value.</li>
+                        <li>Look for language cues for the values of variables. For example.</li>
+                    </ol>
+                    <ul>
+                        <li><strong></strong>"Starts from rest" means initial velocity = 0 m/s</li>
+                        <li><strong></strong>"Comes to a stop" / "Stops" / "Brought to rest" means final velocity = 0
+                            m/s</li>
+                        <li><strong></strong>"Reaches a speed of..." means final velocity</li>
+                        <li><strong></strong>"Moving at a constant speed/velocity" means acceleration = 0, and initial =
+                            final velocity</li>
+                        <li><strong></strong>"Returns to the starting point" means displacement = 0</li>
+                        <li><strong></strong>"Accelerates uniformly" means constant acceleration; use standard kinematic
+                            equations</li>
+                    </ul>
+                    <br>
+                    <p><strong>Reference:</strong></p>
+                    <p style="margin-top: -20px; margin-left: 4rem; "><em>Serway, R. A., & Jewett, J. W. (2010). Physics
+                            for scientists and engineers (8th ed.). Brooks/Cole</em></p>
+
+
                 </div>
 
             </div>

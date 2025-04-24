@@ -1,451 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-.calculator-container {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 20px;
+    <style>
+        body:not(.sb-sidenav-toggled) .sb-sidenav {
+            transform: translateX(-250px); /* or your sidebar width */
+        }
+    
+        body:not(.sb-sidenav-toggled) .sb-nav-fixed #layoutSidenav #layoutSidenav_nav {
+            display: block;
+        }
+        body.no-transition * {
+    transition: none !important;
 }
 
-
-.motion-box {
-background: #e7f3ff;
-    border: 2px solid #007bff;
-    border-radius: 10px;
-    padding: 20px;
-    width: 300px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-
-.motion-box h3 {
-    color: #0056b3;
-    margin: 1.5rem 0 1rem 0;
-    font-size: 1.3em;
-    width: 100%;
-}
-
-
-.motion-box h3:first-child {
-    margin-top: 0;
-}
-
-
-.motion-box input {
-    display: block;
-    width: 90%;
-    margin: 8px auto;
-    padding: 10px;
-    border: 1px solid #007bff;
-    border-radius: 5px;
-    text-align: center;
-}
-
-
-.solve-btn {
-    background: #007bff;
-    color: white;
-    width: 90%;
-    padding: 12px;
-    margin: 15px auto 0;
-    border: none;
-font-size: 1.1em;
-    transition: background 0.3s ease;
-}
-
-
-.solve-btn:hover {
-    background: #0056b3;
-}
-
-
-.results {
-    margin-top: 15px;
-    padding: 10px;
-    background: white;
-    border-radius: 5px;
-    min-height: 80px;
-    width: 90%;
-    text-align: center;
-}
-
-
-.result-display, .resultant-display {
-    margin-top: 15px;
-    width: 100%;
-}
-
-
-.result-item, .resultant-item {
-    display: block;
-    text-align: center;
-    padding: 8px 0;
-}
-
-
-.result-label {
-    font-weight: bold;
-    color: #0056b3;
-}
-
-
-.result-value {
-    color: #333;
-    margin-left: 5px;
-}
-.resultant-value {
-    font-weight: bold;
-    color: #0056b3;
-}
-
-
-.error {
-    color: #dc3545;
-    font-weight: bold;
-    padding: 10px;
-}
-
-
-.auto-filled {
-    background-color: #f0fff0;
-    border-color: #28a745;
-}
-
-</style>
+    </style>
+    
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motion Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
 </head>
+
 <body>
-    <div class="calculator-container">
-        <!-- Vertical Motion Box -->
-        <div class="motion-box vertical">
-            <h3>Vertical Motion</h3>
-            <input type="number" id="s" placeholder="Displacement (m)" oninput="autoSolve('vertical')">
-            <input type="number" id="v_vertical" placeholder="Final Velocity (m/s)" oninput="autoSolve('vertical')">
-            <input type="number" id="u" placeholder="Initial Velocity (m/s)" oninput="autoSolve('vertical')">
-            <input type="number" id="a" placeholder="Acceleration (m/s²)" oninput="autoSolve('vertical')">
-            <input type="number" id="t" placeholder="Time (s)" oninput="autoSolve('vertical')">
-            <button class="solve-btn" id="solveVertical">Solve</button>
-            <div id="verticalResults" class="results"></div>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar-->
+        <div style="background-color: #e7f3ff;" class="border-end" id="sidebar-wrapper">
+            <center>
+                <div style="background-color: #e7f3ff;" class="sidebar-heading border-bottom"><strong>Kinemania</strong></div>
+            </center>
+            <div class="list-group list-group-flush">
+                <a style="background-color: #e7f3ff; border: 2px solid #007bff;" class="list-group-item list-group-item-action list-group-item-light p-3" href="index.html">Homepage</a>
+                <a style="background-color: #e7f3ff;" class="list-group-item list-group-item-action list-group-item-light p-3" href="od_dimension.html">1D solver</a>
+                <a style="background-color: #e7f3ff;" class="list-group-item list-group-item-action list-group-item-light p-3" href="two_dimensional.html">2D solver</a>
+                <a style="background-color: #e7f3ff;" class="list-group-item list-group-item-action list-group-item-light p-3" href="kinetic_graph.html">Acceleration Graph</a>
+                <a style="background-color: #e7f3ff;" class="list-group-item list-group-item-action list-group-item-light p-3" href="kinetic_graph.html">Projectile Graphh</a>
+                <a style="background-color: #e7f3ff;" class="list-group-item list-group-item-action list-group-item-light p-3" href="pva_vs_time.html">P,V,A vs Time Graph</a>
+                <a style="background-color: #e7f3ff;" class="list-group-item list-group-item-action list-group-item-light p-3" href="how_it_works.html">How it works</a>
+                <a style="background-color: #e7f3ff;" class="list-group-item list-group-item-action list-group-item-light p-3" href="formula.html">Formula</a>
+            </div>
         </div>
-        <!-- Horizontal Motion Box -->
-        <div class="motion-box horizontal">
-            <h3>Horizontal Motion</h3>
-            <input type="number" id="d" placeholder="Displacement (m)" oninput="autoSolve('horizontal')">
-            <input type="number" id="v_horizontal" placeholder="Velocity (m/s)" oninput="autoSolve('horizontal')">
-            <input type="number" id="t" placeholder="Time (s)" oninput="autoSolve('horizontal')">
-            <button class="solve-btn" id="solveHorizontal">Solve</button>
-            <div id="horizontalResults" class="results"></div>
-        </div>
-        <!-- Combined Projectile & Vector Section -->
-        <div class="motion-box projectile">
-            <!-- Resultant Vector Section -->
-            <h3>Resultant Vector</h3>
-            <input type="number" id="vx" placeholder="X Component (m/s)" oninput="autoSolve('resultant')">
-            <input type="number" id="vy" placeholder="Y Component (m/s)" oninput="autoSolve('resultant')">
-            <button class="solve-btn" id="solveResultant">Calculate Vector</button>
-            <div id="vectorResults" class="results"></div>
+
+        <!-- Page content wrapper-->
+        <div id="page-content-wrapper" style="background: linear-gradient(to bottom, #93c9f1, #BBDFFB);">
+
+            <!-- Top Section -->
+            <div style="background-color: #e7f3ff;">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg border-bottom" style="background-color: #e7f3ff;">
+                    <div class="container-fluid" style="background-color: #e7f3ff;  ">
+                        <button class="btn btn-primary" id="sidebarToggle">☰</button>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+                    </div>
+                </nav>
+
+                <div class="container-fluid" style="background-color: #e7f3ff; padding-bottom: 50px; ">
+                    <h1 class="text-center" style="font-size: 7rem; font-weight: 600;">Kinemania</h1>
+                    <p class="text-center" style="margin-top: -25px; font-size: 25px;">An all-in-one website for kinematics!</p>
+
+                    <div style="display: flex; justify-content: center; gap: 50px; flex-wrap: wrap;">
+                        <!-- Left Column -->
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <a href="one_dimensional.html" style="background-color: #2196f3; color: white; padding: 10px 20px; width: 250px; text-align: center; font-weight: 600; font-size: 1rem; text-decoration: none; border-radius: 5px;">1 Dimension Solver</a>
+                            <a href="two_dimensional.html" style="background-color: #2196f3; color: white; padding: 10px 20px; width: 250px; text-align: center; font-weight: 600; font-size: 1rem; text-decoration: none; border-radius: 5px;">2 Dimension Solver</a>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <a href="kinetic_graph.html" style="background-color: #2196f3; color: white; padding: 10px 20px; width: 250px; text-align: center; font-weight: 600; font-size: 1rem; text-decoration: none; border-radius: 5px;">Uniform Acceleration Graph</a>
+                            <a href="projectile.html" style="background-color: #2196f3; color: white; padding: 10px 20px; width: 250px; text-align: center; font-weight: 600; font-size: 1rem; text-decoration: none; border-radius: 5px;">Projectile Motion Graph</a>
+                        </div>
+                    </div>
+
+                    <!-- Centered Button Underneath -->
+                    <div style="display: flex; justify-content: center; margin-top: 25px;">
+                        <a href="pva_vs_time.html" style="background-color: #2196f3; color: white; padding: 10px 20px; width: 520px; text-align: center; font-weight: 600; font-size: 1rem; text-decoration: none; border-radius: 5px;">
+                            Position, Velocity, and Acceleration vs. Time Graph
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section -->
+            <div style="background: linear-gradient(to bottom, #e7f3ff, #c1dcff);margin-top: -55px; ">
+                <div class="container mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div style="width: 950px; font-size: 20px; font-family: emoji;">
+                                <div class="row align-items-start">
+                                    <!-- About Us title aligned to end -->
+                                    <div style="padding: 20px;">
+                                        <div style="display: flex; align-items: center;">
+                                            <span style="font-weight: bold; font-size: 3.5rem; margin-right: 10px; margin-top: -35px;">About us</span>
+                                            <div style="flex-grow: 1; height: 2px; background-color: black; margin-top: -25px;"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Paragraph content -->
+                                    <div class="col-md-3 d-flex justify-content-end">
+                                        <h2 class="fw-bold"></h2>
+                                    </div>
 
 
-            <!-- Projectile Motion Section -->
-            <h3>Projectile Motion</h3>
-            <input type="number" id="angle" placeholder="Launch Angle (degrees)" oninput="autoSolve('projectile')">
-            <input type="number" id="v0" placeholder="Initial Velocity (m/s)" oninput="autoSolve('projectile')">
-            <button class="solve-btn" id="solveProjectile">Calculate</button>
-            <div id="projectileResults" class="results"></div>
+                                    <div class="col-md-9" style="text-align: justify; margin-top: -25px;">
+                                        <p>
+                                            As students, we understand how challenging it can be to solve problems
+                                            involving physics that demand analytical skills.
+                                            Focusing on one topic, kinematics, we were inspired to have this site in an
+                                            attempt to make the topic less intimidating and to encourage learning.
+                                            Our all-in-one kinematics solver ought to bridge the gap left by existing
+                                            sites and provide a more complete and convenient experience.
+                                        </p>
+                                        <p>
+                                            We are Karyl Mangosan, Kate Manzano, Nicole Mosquite, and Angela Tabarangao,
+                                            first-year Chemical Engineering students at Bicol University and the
+                                            founders of Kinemania.
+                                            This site was built to help fellow students better understand and solve
+                                            motion-related physics problems more easily.
+                                            This project mirrors our passion for learning and our goal to apply what we
+                                            learn in practical problems.
+                                        </p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
-    <script src="script.js"></script>
-
-
-
-<script>
-document.querySelectorAll('input[type="number"]').forEach(input => {
-  input.addEventListener('focus', () => {
-      input.type = 'text';
-      input.setAttribute('inputmode', 'decimal');
-  });
-input.addEventListener('blur', () => {
-      input.type = 'number';
-  });
-});
-
-
-// Auto-solve on input changes
-function autoSolve(type) {
-  switch(type) {
-      case 'vertical':
-          const verticalInputs = [...document.querySelectorAll('#vertical input')]
-              .filter(i => i.value.trim() !== '').length;
-          if(verticalInputs >= 3) {
-              solveVertical();
-          } else {
-              clearResults('verticalResults');
-          }
-          break;
-         
-      case 'horizontal':
-          const horizontalInputs = [...document.querySelectorAll('#horizontal input')]
-              .filter(i => i.value.trim() !== '').length;
-          if(horizontalInputs >= 2) {
-              solveHorizontal();
-          } else {
-              clearResults('horizontalResults');
-          }
-          break;
-         
-      case 'projectile':
-          if(document.getElementById('angle').value.trim() &&
-             document.getElementById('v0').value.trim()) {
-              calculateProjectile();
-          } else {
-              clearResults('projectileResults');
-          }
-          break;
-      case 'resultant':
-          if(document.getElementById('vx').value.trim() &&
-             document.getElementById('vy').value.trim()) {
-              calculateResultant();
-          } else {
-              clearResults('vectorResults');
-          }
-          break;
-  }
-}
-// Vertical Motion Solver
-document.getElementById('solveVertical').addEventListener('click', solveVertical);
-function solveVertical() {
-  let s = parseInput('s');
-  let v = parseInput('v_vertical');
-  let u = parseInput('u');
-  let a = parseInput('a');
-  let t = parseInput('t');
-
-
-  const knownCount = [s, v, u, a, t].filter(x => x !== undefined).length;
-  if (knownCount < 3) {
-      showError('Enter at least 3 values', 'verticalResults');
-      return;
-  }
-
-
-  let changed;
-  do {
-      changed = false;
-     
-      // Equation 1: v = u + at
-      if (v === undefined && u !== undefined && a !== undefined && t !== undefined) {
-          v = u + a * t;
-          changed = true;
-      } else if (u === undefined && v !== undefined && a !== undefined && t !== undefined) {
-          u = v - a * t;
-          changed = true;
-} else if (a === undefined && v !== undefined && u !== undefined && t !== undefined && t !== 0) {
-          a = (v - u) / t;
-          changed = true;
-      } else if (t === undefined && v !== undefined && u !== undefined && a !== undefined && a !== 0) {
-          t = (v - u) / a;
-          changed = true;
-      }
-
-
-      // Equation 2: s = ut + ½at²
-      if (s === undefined && u !== undefined && t !== undefined && a !== undefined) {
-          s = u * t + 0.5 * a * t * t;
-          changed = true;
-      } else if (u === undefined && s !== undefined && t !== undefined && a !== undefined && t !== 0) {
-          u = (s - 0.5 * a * t * t) / t;
-          changed = true;
-      } else if (a === undefined && s !== undefined && u !== undefined && t !== undefined && t !== 0) {
-          a = 2 * (s - u * t) / (t * t);
-          changed = true;
-      } else if (t === undefined && s !== undefined && u !== undefined && a !== undefined) {
-          const A = 0.5 * a;
-          const B = u;
-          const C = -s;
-          const discriminant = B * B - 4 * A * C;
-          if (discriminant >= 0) {
-              const sqrtVal = Math.sqrt(discriminant);
-              const t1 = (-B + sqrtVal) / (2 * A);
-              const t2 = (-B - sqrtVal) / (2 * A);
-              t = t1 > 0 ? t1 : t2 > 0 ? t2 : undefined;
-              if (t !== undefined) changed = true;
-          }
-      }
-
-
-      // Equation 3: v² = u² + 2as
-if (v === undefined && u !== undefined && a !== undefined && s !== undefined) {
-          const val = u * u + 2 * a * s;
-          if (val >= 0) {
-              v = Math.sqrt(val);
-              changed = true;
-          }
-      } else if (u === undefined && v !== undefined && a !== undefined && s !== undefined) {
-          const val = v * v - 2 * a * s;
-          if (val >= 0) {
-              u = Math.sqrt(val);
-              changed = true;
-          }
-      } else if (a === undefined && v !== undefined && u !== undefined && s !== undefined && s !== 0) {
-          a = (v * v - u * u) / (2 * s);
-          changed = true;
-      } else if (s === undefined && v !== undefined && u !== undefined && a !== undefined && a !== 0) {
-          s = (v * v - u * u) / (2 * a);
-          changed = true;
-      }
-  } while (changed);
-
-
-  displayResults('verticalResults', {
-      Displacement: s,
-      'Final Velocity': v,
-      'Initial Velocity': u,
-      Acceleration: a,
-      Time: t
-  });
-}
-
-
-// Horizontal Motion Solver
-document.getElementById('solveHorizontal').addEventListener('click', solveHorizontal);
-function solveHorizontal() {
-  let d = parseInput('d');
-  let v = parseInput('v_horizontal');
-let t = parseInput('t');
-
-
-  const knownCount = [d, v, t].filter(x => x !== undefined).length;
-  if (knownCount < 2) {
-      showError('Enter any 2 values', 'horizontalResults');
-      return;
-  }
-
-
-  if (d === undefined && v !== undefined && t !== undefined) {
-      d = v * t;
-  } else if (v === undefined && d !== undefined && t !== undefined && t !== 0) {
-      v = d / t;
-  } else if (t === undefined && d !== undefined && v !== undefined && v !== 0) {
-      t = d / v;
-  }
-
-
-  displayResults('horizontalResults', {
-      Displacement: d,
-      Velocity: v,
-      Time: t
-  });
-}
-
-
-// Projectile Calculator
-document.getElementById('solveProjectile').addEventListener('click', calculateProjectile);
-function calculateProjectile() {
-  const θ = parseInput('angle');
-  const v0 = parseInput('v0');
-  const g = 9.81;
- 
-  if (!θ || !v0) {
-      showError('Both angle and initial velocity required', 'projectileResults');
-      return;
-  }
-
-
-  const θRad = θ * Math.PI / 180;
-const maxHeight = (v0 * v0 * Math.sin(θRad) ** 2) / (2 * g);
-  const range = (v0 * v0 * Math.sin(2 * θRad)) / g;
-  const flightTime = (2 * v0 * Math.sin(θRad)) / g;
-
-
-  displayResults('projectileResults', {
-      'Max Height': maxHeight,
-      'Range': range,
-      'Flight Time': flightTime
-  });
-}
-
-
-// Resultant Vector Calculator
-document.getElementById('solveResultant').addEventListener('click', calculateResultant);
-function calculateResultant() {
-  const vx = parseInput('vx');
-  const vy = parseInput('vy');
- 
-  if (vx === undefined || vy === undefined) {
-      showError('Both components required', 'vectorResults');
-      return;
-  }
-
-
-  const magnitude = Math.sqrt(vx*vx + vy*vy);
-  const angle = Math.atan2(vy, vx) * 180/Math.PI;
-  const adjustedAngle = angle < 0 ? angle + 360 : angle;
-
-
-  displayVectorResults('vectorResults', {
-      Magnitude: magnitude,
-      Direction: adjustedAngle
-  });
-}
-
-
-// Helper Functions
-function parseInput(id) {
-  const val = document.getElementById(id).value.trim();
-  return val === '' ? undefined : parseFloat(val);
-}
-
-
-function showError(message, target) {
-document.getElementById(target).innerHTML = `<span class="error">${message}</span>`;
-}
-
-
-function clearResults(target) {
-  document.getElementById(target).innerHTML = '';
-}
-
-
-function displayResults(target, results) {
-  const format = num => num !== undefined ? num.toFixed(3) : 'N/A';
-  document.getElementById(target).innerHTML = `
-      <div class="result-display">
-          ${Object.entries(results).map(([key, value]) => `
-              <div class="result-item">
-                  <span class="result-label">${key}:</span>
-                  <span class="result-value">${format(value)} ${key === 'Max Height' || key === 'Range' ? 'm' : key === 'Flight Time' ? 's' : ''}</span>
-              </div>
-          `).join('')}
-      </div>
-  `;
-}
-
-
-function displayVectorResults(target, results) {
-  const format = num => num !== undefined ? num.toFixed(3) : 'N/A';
-  document.getElementById(target).innerHTML = `
-      <div class="resultant-display">
-          ${Object.entries(results).map(([key, value]) => `
-              <div class="resultant-item">
-                  <span class="result-label">${key}:</span>
-                  <span class="resultant-value">${format(value)} ${key === 'Magnitude' ? 'm/s' : '°'}</span>
-              </div>
-          `).join('')}
-      </div>
-  `;
-}
-</script>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
 </body>
-</html>
 
+</html>

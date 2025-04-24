@@ -2,16 +2,53 @@
 <html lang="en">
 <style>
     body:not(.sb-sidenav-toggled) .sb-sidenav {
-            transform: translateX(-250px); /* or your sidebar width */
-        }
-    
-        body:not(.sb-sidenav-toggled) .sb-nav-fixed #layoutSidenav #layoutSidenav_nav {
-            display: block;
-        }
-        body.no-transition * {
-    transition: none !important;
-}
+        transform: translateX(-250px);
+        /* or your sidebar width */
+    }
 
+    body:not(.sb-sidenav-toggled) .sb-nav-fixed #layoutSidenav #layoutSidenav_nav {
+        display: block;
+    }
+
+    body.no-transition * {
+        transition: none !important;
+    }
+
+    .your-div-class {
+        background-color: #e7f3ff;
+        /* Light blue background */
+        border: 2px solid #007bff;
+        /* Darker blue border */
+        border-radius: 10px;
+        /* Rounded corners */
+        padding: 50px;
+        /* Space inside the div */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        /* Subtle shadow for depth */
+        font-family: Arial, sans-serif;
+        /* Font style */
+        margin-left: 80px;
+        margin-right: 70px;
+        margin-bottom: 50px;
+    }
+
+    .text-justify-custom {
+        text-align: justify;
+    }
+
+    h1 {
+        color: #0e60b7;
+        /* Dark greenish color for headings */
+        text-align: center;
+        /* Centered heading */
+    }
+
+    p {
+        color: #333;
+        /* Dark gray for text */
+        line-height: 1.5;
+        /* Improved readability */
+    }
 </style>
 
 <head>
@@ -30,7 +67,10 @@
     <div class="d-flex" id="wrapper">
         <!-- Sidebar-->
         <div style="background-color: #e7f3ff;" class="border-end" id="sidebar-wrapper">
-            <center><div style="background-color: #e7f3ff;" class="sidebar-heading border-bottom"><strong>Kinemania</strong> </div></center>
+            <center>
+                <div style="background-color: #e7f3ff;" class="sidebar-heading border-bottom"><strong>Kinemania</strong>
+                </div>
+            </center>
             <div class="list-group list-group-flush">
                 <a style="background-color: #e7f3ff;"
                     class="list-group-item list-group-item-action list-group-item-light p-3"
@@ -44,7 +84,7 @@
                 <a style="background-color: #e7f3ff;"
                     class="list-group-item list-group-item-action list-group-item-light p-3"
                     href="kinetic_graph.html">Acceleration Graph</a>
-                <a style="background-color: #e7f3ff; "
+                <a style="background-color: #e7f3ff;"
                     class="list-group-item list-group-item-action list-group-item-light p-3"
                     href="kinetic_graph.html">Projectile Graphh</a>
                 <a style="background-color: #e7f3ff; "
@@ -56,16 +96,16 @@
                 <a style="background-color: #e7f3ff;"
                     class="list-group-item list-group-item-action list-group-item-light p-3"
                     href="how_it_works.html">How it works</a>
-                <a style="background-color: #e7f3ff; border: 2px solid #007bff; "
-                    class="list-group-item list-group-item-action list-group-item-light p-3"
+                <a style="background-color: #e7f3ff;border: 2px solid #007bff; "
+                    class="list-group-item list-group-item-action list-group-item-light p-3  "
                     href="formula.html">Formula</a>
             </div>
         </div>
         <!-- Page content wrapper-->
         <div style="background-color: #e7f3ff;" id="page-content-wrapper">
             <!-- Top navigation-->
-            <nav style="background-color: #e7f3ff;" class="navbar navbar-expand-lg   border-bottom">
-                <div style="background-color: #e7f3ff;" class="container-fluid">
+            <nav style=" background-color: #e7f3ff;" class="navbar navbar-expand-lg   border-bottom">
+                <div style="background-color: #e7f3ff;  " class="container-fluid">
                     <button class="btn btn-primary" id="sidebarToggle">☰</button>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -77,72 +117,32 @@
                 </div>
             </nav>
             <!-- Page content-->
-            <div class="container-fluid" style="background-color: #e7f3ff;">
-                <div class="container mt-5">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-10">
-                            <div style="    width: 950px;
-                            font-size: 20px;
-                            font-family: emoji;
-                        " class="p-4 bg-white rounded shadow">
-                                <div class="row align-items-start">
-                                    <!-- About Us title aligned to end -->
-                                    <hr>
-                                    <div class="col-md-3 d-flex justify-content-end">
-                                        <h2 class="fw-bold" style="margin-right: 15px;">Formula</h2>
-                                    </div>
-
-                                    <!-- Paragraph content -->
-                                    <div class="col-md-9" style="text-align: justify;">
-                                        <p>
-                                            <strong>Kinematics in one dimension<br></strong>
-                                            d=xf-xi<br>
-                                            Particle Under Constant Velocity<br>
-                                            d=vxt<br>
-                                            Particle Under Constant Acceleration<br>
-                                            vxf=vxi+at<br>
-                                            vxavg=(vxi+vxf)/2<br>
-
-                                            d=1/2(vxi+vxf)t<br>
-                                            d=vxit+1/2(at2)<br>
-                                            vxf2=vxi2+2ad<br>
-                                            <hr>
-                                        </p>
-                                        <p>
-                                            <strong> Kinematics in two dimension<br></strong>
-                                            Particle Under Constant Acceleration<br>
-                                            vxf=vxi+at<br>
-                                            vxavg=(vxi+vxf)/2<br>
-
-                                            d=1/2(vxi+vxf)t<br>
-                                            d=vxit+1/2(at2)<br>
-                                            vxf2=vxi2+2ad
-                                            <br>
-                                            Meanwhile the horizontal motion will have the following formulas based
-                                            on<br>
-                                            motion with constant velocity:<br>
-                                            d=vt<br>
-                                            v=delta x/ delta t<br>
-
-                                            <hr>
-
-                                        </p>
-                                        <p>
-                                            <strong>Variables Used:<br></strong>
-                                            Initial velocity (vxi)<br>
-                                            Final velocity (vxf)<br>
-                                            Accelerattion (a)<br>
-                                            Time (t)<br>
-                                            Displacement (d)<br>
-                                            Change in position(delta x)<br>
-                                        
-                                        </p>
-                                        <hr>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div style="background-color: #e7f3ff;" class="container-fluid">
+                <div class="your-div-class">
+                    <h1>Formula</h1>
+                    
+                    <div class="text-center my-4">
+                        <h3 class="mb-3"> <strong>Kinematics in one Dimension</strong> </h3>
+                        <img src="assets/od.png" alt="Minor Concept" class="img-fluid"
+                            style="border: 1px solid rgb(126, 124, 124); border-radius: 5px;">
                     </div>
+
+                    <div class="text-center my-4">
+                        <h3 class="mb-3"><strong>Kinematics in two dimension</strong> </h3>
+                        <img src="assets/td.png" alt="Minor Concept" class="img-fluid"
+                            style=" width: 650px; border: 1px solid rgb(126, 124, 124); border-radius: 5px;">
+                    </div>
+
+
+                    <div class="text-center my-4">
+                        <h3 class="mb-3"><strong>Sample Problem</strong> </h3>
+                        <img src="assets/sample.png" alt="Minor Concept" class="img-fluid"
+                            style=" width: 730px; border: 1px solid rgb(126, 124, 124); border-radius: 5px;">
+                    </div>
+                    
+                    
+                    
+                    
                 </div>
             </div>
         </div>
