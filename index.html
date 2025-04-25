@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <style>
+        html{
+            scroll-behavior: smooth;
+        }
         
         body:not(.sb-sidenav-toggled) .sb-sidenav {
             transform: translateX(-250px); /* or your sidebar width */
@@ -73,7 +76,7 @@
                 <a style="background-color: #e7f3ff;" class="list-group-item list-group-item-action list-group-item-light p-3" href="od_dimension.html">1D solver</a>
                 <a style="background-color: #e7f3ff;" class="list-group-item list-group-item-action list-group-item-light p-3" href="two_dimensional.html">2D solver</a>
                 <a style="background-color: #e7f3ff;" class="list-group-item list-group-item-action list-group-item-light p-3" href="kinetic_graph.html">Acceleration Graph</a>
-                <a style="background-color: #e7f3ff;" class="list-group-item list-group-item-action list-group-item-light p-3" href="kinetic_graph.html">Projectile Graphh</a>
+                <a style="background-color: #e7f3ff;" class="list-group-item list-group-item-action list-group-item-light p-3" href="kinetic_graph.html">Projectile Graph</a>
                 <a style="background-color: #e7f3ff;" class="list-group-item list-group-item-action list-group-item-light p-3" href="pva_vs_time.html">P,V,A vs Time Graph</a>
                 <a style="background-color: #e7f3ff;" class="list-group-item list-group-item-action list-group-item-light p-3" href="how_it_works.html">How it works</a>
                 <a style="background-color: #e7f3ff;" class="list-group-item list-group-item-action list-group-item-light p-3" href="formula.html">Formula</a>
@@ -191,8 +194,8 @@
         
             // Scroll to the About Us section smoothly
             document.querySelector("#aboutus").scrollIntoView({
-                behavior: "smooth", // Smooth scroll
-                block: "start"      // Scroll to the top of the element
+                behavior: "smooth", 
+                block: "start"      
             });
         });
         </script>
